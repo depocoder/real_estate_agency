@@ -13,7 +13,7 @@ def fix_number(apps, schema_editor):
             pure_number = phonenumbers.format_number(
                 parsing_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
             flat.owner_pure_phone = pure_number
-        flat.save()
+            flat.save()
 
 
 def move_backward(apps, schema_editor):
