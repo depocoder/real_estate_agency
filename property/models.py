@@ -5,9 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
-    owner = models.CharField("ФИО владельца", max_length=200)
-    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, null=True)
-    owners_phonenumber = models.CharField("Номер владельца", max_length=20)
     created_at = models.DateTimeField("Когда создано объявление", default=timezone.now, db_index=True)
     new_building  = models.NullBooleanField('Новостройка', null=True)
 
@@ -41,10 +38,10 @@ class Appeal(models.Model):
 
 
 class Owner(models.Model):
-    owner = models.CharField("ФИО владельца", max_length=200)
-    owners_phonenumber = models.CharField("Номер владельца", max_length=20)
-    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, null=True)
-    owned_apartments = models.ManyToManyField(Flat, related_name='owned_apartments_info', verbose_name='Квартиры в собственности', blank=True)
+    owner = models.CharField("ФИО владельца", db_index=True, max_length=200)
+    owners_phonenumber = models.CharField("Номер владельца", db_index=True, max_length=20)
+    owner_pure_phone = PhoneNumberField('Нормализованный номер владельца', db_index=True, blank=True, null=True)
+    owned_apartments = models.ManyToManyField(Flat, related_name='owned_apartments_info', db_index=True, verbose_name='Квартиры в собственности', blank=True)
 
     def __str__(self):
         return f"{self.owner}, {self.owner_pure_phone}"

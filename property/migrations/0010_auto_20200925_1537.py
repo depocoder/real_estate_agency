@@ -22,6 +22,7 @@ def move_backward(apps, schema_editor):
         flat.owner_pure_phone = None
         flat.save()
 
+
 class Migration(migrations.Migration):
 
     dependencies = [
