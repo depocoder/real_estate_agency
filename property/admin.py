@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import Flat
-from property.models import Flat, Appeal
+from property.models import Flat, Appeal, Owner
  
  
 class FlatAdmin(admin.ModelAdmin):
@@ -14,6 +14,13 @@ class FlatAdmin(admin.ModelAdmin):
 
 class AppealAdmin(admin.ModelAdmin):
     raw_id_fields = ("apartment", 'author')
+    
+
+class OwnerAdmin(admin.ModelAdmin):
+    raw_id_fields = ["owned_apartments",]
+
+
 
 admin.site.register(Flat, FlatAdmin)
 admin.site.register(Appeal, AppealAdmin)
+admin.site.register(Owner, OwnerAdmin)
