@@ -21,10 +21,10 @@ class Flat(models.Model):
 
     has_balcony = models.NullBooleanField("Наличие балкона", db_index=True)
     active = models.BooleanField("Активно-ли объявление", db_index=True)
+    who_liked = models.ManyToManyField(User, related_name='Who_liked_info', verbose_name='Кто лайкнул', )
     construction_year = models.IntegerField("Год постройки здания", null=True, blank=True, db_index=True)
-
 
 class Appeal(models.Model):
     author = models.ForeignKey(User, related_name='author_info', verbose_name='Кто жаловался', on_delete=models.CASCADE)
     apartment = models.ForeignKey(Flat, related_name='apartment_info', verbose_name='Квартира, на которую пожаловались.', on_delete=models.CASCADE)
-    complaint_text = models.CharField("Текст жалобы", max_length=2000)
+    complaint_text = models.TextField("Текст жалобы", max_length=2000)
