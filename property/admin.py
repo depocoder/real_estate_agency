@@ -14,10 +14,12 @@ class FlatAdmin(admin.ModelAdmin):
 
 class AppealAdmin(admin.ModelAdmin):
     raw_id_fields = ("apartment", 'author')
+    list_display = ["author", "apartment"]
     
 
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ["owned_apartments",]
+    list_display = ["owner", "owner_pure_phone"]
 
 
 
