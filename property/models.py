@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from django.contrib.auth.models import User
 
 class Flat(models.Model):
     owner = models.CharField("ФИО владельца", max_length=200)
@@ -24,3 +24,7 @@ class Flat(models.Model):
     construction_year = models.IntegerField("Год постройки здания", null=True, blank=True, db_index=True)
 
 
+class Appeal(models.Model):
+    author = models.ForeignKey(User, related_name='author_info', verbose_name='Кто жаловался', on_delete=models.CASCADE)
+    apartment = models.ForeignKey(Flat, related_name='apartment_info', verbose_name='Квартира, на которую пожаловались.', on_delete=models.CASCADE)
+    complaint_text = models.CharField("Текст жалобы", max_length=2000)
