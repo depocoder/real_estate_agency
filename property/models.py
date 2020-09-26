@@ -39,7 +39,7 @@ class Flat(models.Model):
         "Год постройки здания", null=True, blank=True, db_index=True)
 
     def __str__(self):
-        return f"{self.owner}, {self.living_area}"
+        return f"{self.living_area}"
 
 
 class Appeal(models.Model):
