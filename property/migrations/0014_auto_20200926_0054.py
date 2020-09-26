@@ -1,6 +1,5 @@
-
-
 from django.db import migrations
+
 
 def swap_owned_apartments(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
@@ -10,7 +9,7 @@ def swap_owned_apartments(apps, schema_editor):
             owner=flat.owner, owners_phonenumber=flat.owners_phonenumber,
             owner_pure_phone=flat.owner_pure_phone,)
         owner[0].owned_apartments.set([flat])
-    
+
 
 class Migration(migrations.Migration):
 

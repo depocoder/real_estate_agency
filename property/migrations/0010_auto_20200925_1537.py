@@ -32,10 +32,3 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(fix_number, move_backward),
     ]
-
-        
-
-
-
-
-

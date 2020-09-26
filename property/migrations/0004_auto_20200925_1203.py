@@ -8,7 +8,6 @@ def set_new_building(apps, schema_editor):
     for flat in Flat.objects.all():
         flat.new_building = flat.construction_year >= 2015
         flat.save()
-        
 
 
 class Migration(migrations.Migration):
